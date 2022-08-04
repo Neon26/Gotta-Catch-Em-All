@@ -3,7 +3,7 @@ import requests
 from app import app
 from .forms import LoginForm, RegisterForm, EditProfileForm
 from app.forms import CatchPokemon
-from .models import User
+from .models import *
 from flask_login import login_user, login_required, logout_user, current_user
 
 
@@ -17,23 +17,23 @@ def index():
 def register():
     form = RegisterForm()
     if request.method == 'POST' and form.validate_on_submit():
-        try:
-            new_user_data={
-                "first_name":form.first_name.data.title(),
-                "last_name":form.last_name.data.title(),
-                "email":form.email.data.lower(),
-                "password":form.password.data,
-                "icon":form.icon.data
-            }
-            
-            new_user_object = User()
+        # try:
+        new_user_data={
+            "first_name":form.first_name.data.title(),
+            "last_name":form.last_name.data.title(),
+            "email":form.email.data.lower(),
+            "password":form.password.data,
+            # "icon":form.icon.data
+        }
+        
+        new_user_object = User()
 
-            new_user_object.from_dict(new_user_data)
+        new_user_object.from_dict(new_user_data)
 
-            new_user_object.save()
-        except:
-            flash("An Unexpected Error occurred", "danger")
-            return render_template('register.html.j2', form=form)
+        new_user_object.save()
+        # except:
+        #     flash("An Unexpected Error occurred", "danger")
+        #     return render_template('register.html.j2', form=form)
         flash("Successfully registered", "success")
         return redirect(url_for('login'))
     return render_template('register.html.j2', form=form)
