@@ -12,7 +12,7 @@ Catch Pokemon
 
 {% block content %}
       <h1 >Gotta Catch 'Em All</h1>
-      <form action="{{url_for('pokemon')}}" method="POST">
+      <form action="{{url_for('main.pokemon')}}" method="POST">
       {{form.hidden_tag()}}
       <div class="mb-3">
           {{form.pokemon_name.label(class="form-label")}}

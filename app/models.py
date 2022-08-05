@@ -33,6 +33,10 @@ class User(UserMixin, db.Model):
     
     def save(self):
         db.session.add(self) 
+        db.session.commit()
+
+    def delete(self):
+        db.session.delete(self)
         db.session.commit() 
     
     def from_dict(self, data):
@@ -48,4 +52,34 @@ class User(UserMixin, db.Model):
 @login.user_loader
 def load_user(id):
     return User.query.get(int(id))
+
+
+class Pokemon(db.Model):
+    __tablename__ = 'pokemon'
+
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String)
+    created_on = db.Column(db.DateTime, default=dt.utcnow)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    user = db.relationship('User', backref=db.backref('pokemon', lazy=True))
+
+    def __repr__(self):
+        return f'<Pokemon: {self.name} | {self.id}>'
+
+    def __str__(self):
+        return f'<Pokemon: {self.name} | {self.id}>'
+
+    def from_dict(self, data):
+        self.name=data['name']
+        self.icon=data['icon']
+        self.user_id=data['user_id']
+
+    def save(self):
+        db.session.add(self) 
+        db.session.commit()
+
+    def delete(self):
+        db.session.delete(self)
+        db.session.commit()
+
     
