@@ -15,25 +15,25 @@ def index():
 def register():
     form = RegisterForm()
     if request.method == 'POST' and form.validate_on_submit():
-        # try:
-        new_user_data={
-            "first_name":form.first_name.data.title(),
-            "last_name":form.last_name.data.title(),
-            "email":form.email.data.lower(),
-            "password":form.password.data,
-            # "icon":form.icon.data
-        }
-        
-        new_user_object = User()
+        try:
+            new_user_data={
+                "first_name":form.first_name.data.title(),
+                "last_name":form.last_name.data.title(),
+                "email":form.email.data.lower(),
+                "password":form.password.data,
+                "icon":form.icon.data
+            }
+            
+            new_user_object = User()
 
-        new_user_object.from_dict(new_user_data)
+            new_user_object.from_dict(new_user_data)
 
-        new_user_object.save()
-        # except:
-        #     flash("An Unexpected Error occurred", "danger")
-        #     return render_template('register.html.j2', form=form)
+            new_user_object.save()
+        except:
+            flash("An Unexpected Error occurred", "danger")
+            return render_template('register.html.j2', form=form)
         flash("Successfully registered", "success")
-        return redirect(url_for('login'))
+        return redirect(url_for('auth.login'))
     return render_template('register.html.j2', form=form)
 
 @auth.route('/edit_profile', methods=['GET', 'POST'])
@@ -58,7 +58,7 @@ def edit_profile():
         except:
             flash("Error updating profile", 'danger')
             return redirect('edit_profile')
-        return redirect(url_for('index'))
+        return redirect(url_for('social.index'))
     return render_template('register.html.j2',form=form)
 
 @auth.route('/login', methods=['GET', 'POST'])
@@ -72,15 +72,15 @@ def login():
         if u and u.check_hashed_password(password):
             flash('Successfully logged in','success')
             login_user(u)
-            return redirect(url_for('index'))
+            return redirect(url_for('social.index'))
         flash("Incorrect Email/password Combo", "warning")
         return render_template('login.html.j2', form=form)
 
     return render_template('login.html.j2', form=form)
 
 @auth.route('/logout', methods=['GET'])
-# @login_required
+@login_required
 def logout():
     logout_user()
     flash('Successfully logged out', 'primary')
-    return redirect(url_for('index'))
+    return redirect(url_for('social.index'))

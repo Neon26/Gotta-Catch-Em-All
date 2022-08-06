@@ -20,6 +20,21 @@ class RegisterForm(FlaskForm):
         validators=[DataRequired(), EqualTo('password', message='Passwords Must Match')])
     submit = SubmitField('Register')
 
+    r1=random.randint(1,1000)
+    r2=random.randint(1001,2000)
+    r3=random.randint(2001,3000)
+    r4=random.randint(3001,4000)
+
+    #https://avatars.dicebear.com/api/croodles/@$@!%^$@%^@%$^&@&.svg
+
+    r1_img = markupsafe.Markup(f'<img src="https://avatars.dicebear.com/api/croodles/{r1}.svg" height="75px">')
+    r2_img = markupsafe.Markup(f'<img src="https://avatars.dicebear.com/api/croodles/{r2}.svg" height="75px">')
+    r3_img = markupsafe.Markup(f'<img src="https://avatars.dicebear.com/api/croodles/{r3}.svg" height="75px">')
+    r4_img = markupsafe.Markup(f'<img src="https://avatars.dicebear.com/api/croodles/{r4}.svg" height="75px">')
+
+                                                                #list of tuples value, label
+    icon = RadioField('Avatar', validators=[DataRequired()], choices=[(r1,r1_img),(r2, r2_img),(r3, r3_img),(r4, r4_img)])
+
 
     def validate_email(form, field):
         same_email_user = User.query.filter_by(email = field.data).first()
@@ -36,17 +51,17 @@ class EditProfileForm(FlaskForm):
     submit = SubmitField('Update') 
 
 
-    # r1=random.randint(1,1000)
-    # r2=random.randint(1001,2000)
-    # r3=random.randint(2001,3000)
-    # r4=random.randint(3001,4000)
+    r1=random.randint(1,1000)
+    r2=random.randint(1001,2000)
+    r3=random.randint(2001,3000)
+    r4=random.randint(3001,4000)
 
     
 
-    # r1_img = markupsafe.Markup(f'<img src="https://avatars.dicebear.com/api/croodles/{r1}.svg" height="75px">')
-    # r2_img = markupsafe.Markup(f'<img src="https://avatars.dicebear.com/api/croodles/{r2}.svg" height="75px">')
-    # r3_img = markupsafe.Markup(f'<img src="https://avatars.dicebear.com/api/croodles/{r3}.svg" height="75px">')
-    # r4_img = markupsafe.Markup(f'<img src="https://avatars.dicebear.com/api/croodles/{r4}.svg" height="75px">')
+    r1_img = markupsafe.Markup(f'<img src="https://avatars.dicebear.com/api/croodles/{r1}.svg" height="75px">')
+    r2_img = markupsafe.Markup(f'<img src="https://avatars.dicebear.com/api/croodles/{r2}.svg" height="75px">')
+    r3_img = markupsafe.Markup(f'<img src="https://avatars.dicebear.com/api/croodles/{r3}.svg" height="75px">')
+    r4_img = markupsafe.Markup(f'<img src="https://avatars.dicebear.com/api/croodles/{r4}.svg" height="75px">')
 
-    #                                                             #
-    # icon = RadioField('Avatar', validators=[DataRequired()], choices=[(r1,r1_img),(r2, r2_img),(r3, r3_img),(r4, r4_img)])
+                                                                #
+    icon = RadioField('Avatar', validators=[DataRequired()], choices=[(r1,r1_img),(r2, r2_img),(r3, r3_img),(r4, r4_img)])

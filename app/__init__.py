@@ -3,6 +3,7 @@ from config import Config
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_login import LoginManager
+from flask_moment import Moment
 
 
 db = SQLAlchemy()
@@ -11,6 +12,8 @@ migrate = Migrate()
 
 login = LoginManager()
 
+momemt = Moment()
+
 def create_app(config_class=Config):
     app = Flask(__name__)
     app.config.from_object(Config)
@@ -18,6 +21,7 @@ def create_app(config_class=Config):
     db.init_app(app)
     migrate.init_app(app, db)
     login.init_app(app)
+    momemt.init_app(app)
 
 
     login.login_view = 'login'
@@ -29,6 +33,9 @@ def create_app(config_class=Config):
 
     from .blueprints.main import bp as main_bp
     app.register_blueprint(main_bp)
+
+    from .blueprints.social import bp as social_bp
+    app.register_blueprint(social_bp)
 
     return app
 
