@@ -25,12 +25,12 @@ class RegisterForm(FlaskForm):
     r3=random.randint(2001,3000)
     r4=random.randint(3001,4000)
 
-    #https://avatars.dicebear.com/api/croodles/@$@!%^$@%^@%$^&@&.svg
+    #https://avatars.dicebear.com/api/bottts/@$@!%^$@%^@%$^&@&.svg
 
-    r1_img = markupsafe.Markup(f'<img src="https://avatars.dicebear.com/api/croodles/{r1}.svg" height="75px">')
-    r2_img = markupsafe.Markup(f'<img src="https://avatars.dicebear.com/api/croodles/{r2}.svg" height="75px">')
-    r3_img = markupsafe.Markup(f'<img src="https://avatars.dicebear.com/api/croodles/{r3}.svg" height="75px">')
-    r4_img = markupsafe.Markup(f'<img src="https://avatars.dicebear.com/api/croodles/{r4}.svg" height="75px">')
+    r1_img = markupsafe.Markup(f'<img src="https://avatars.dicebear.com/api/bottts/{r1}.svg" height="75px">')
+    r2_img = markupsafe.Markup(f'<img src="https://avatars.dicebear.com/api/bottts/{r2}.svg" height="75px">')
+    r3_img = markupsafe.Markup(f'<img src="https://avatars.dicebear.com/api/bottts/{r3}.svg" height="75px">')
+    r4_img = markupsafe.Markup(f'<img src="https://avatars.dicebear.com/api/bottts/{r4}.svg" height="75px">')
 
                                                                 #list of tuples value, label
     icon = RadioField('Avatar', validators=[DataRequired()], choices=[(r1,r1_img),(r2, r2_img),(r3, r3_img),(r4, r4_img)])
@@ -58,10 +58,10 @@ class EditProfileForm(FlaskForm):
 
     
 
-    r1_img = markupsafe.Markup(f'<img src="https://avatars.dicebear.com/api/croodles/{r1}.svg" height="75px">')
-    r2_img = markupsafe.Markup(f'<img src="https://avatars.dicebear.com/api/croodles/{r2}.svg" height="75px">')
-    r3_img = markupsafe.Markup(f'<img src="https://avatars.dicebear.com/api/croodles/{r3}.svg" height="75px">')
-    r4_img = markupsafe.Markup(f'<img src="https://avatars.dicebear.com/api/croodles/{r4}.svg" height="75px">')
+    r1_img = markupsafe.Markup(f'<img src="https://avatars.dicebear.com/api/bottts/{r1}.svg" height="75px">')
+    r2_img = markupsafe.Markup(f'<img src="https://avatars.dicebear.com/api/bottts/{r2}.svg" height="75px">')
+    r3_img = markupsafe.Markup(f'<img src="https://avatars.dicebear.com/api/bottts/{r3}.svg" height="75px">')
+    r4_img = markupsafe.Markup(f'<img src="https://avatars.dicebear.com/api/bottts/{r4}.svg" height="75px">')
 
                                                                 #
     icon = RadioField('Avatar', validators=[DataRequired()], choices=[(r1,r1_img),(r2, r2_img),(r3, r3_img),(r4, r4_img)])

@@ -1,0 +1,10 @@
+body {
+    color:white;
+    background-image: url("https://res.cloudinary.com/dsmlypwwo/image/upload/v1659966257/wallpaperflare.com_wallpaper2_qb6ego.jpg");
+    font-family: "Heebo", sans-serif;
+    text-align: center;
+  }
+  
+  html,body,main {
+    min-height: 100%;
+  }

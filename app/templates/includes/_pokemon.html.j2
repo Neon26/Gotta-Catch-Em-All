@@ -1,0 +1,18 @@
+<div class="card" style="width: 18rem;">
+  <img src="{{poke.sprite}}" class="card-img-top" alt="pokemon_image">
+  <div class="card-body">
+    <h5 class="card-title">{{poke.name}}</h5>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">Ability: {{poke.ability}}</li>
+    <li class="list-group-item">Exp: {{poke.exp}}</li>
+    <li class="list-group-item">Attack Power: {{poke.attk}}</li>
+    <li class="list-group-item">Hit Points: {{poke.hp}}</li>
+    <li class="list-group-item">Deffense: {{poke.defense}}</li>
+  </ul>
+  <div class="card-body">
+    {% if poke.user_id == current_user.id %}
+    <a href="{{url_for('main.release_pokemon', id=poke.id)}}" class="btn btn-warning">Release</a>
+    {% endif %}
+  </div>
+</div>

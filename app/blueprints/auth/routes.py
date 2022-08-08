@@ -69,10 +69,10 @@ def login():
         password = form.password.data
 
         u = User.query.filter_by(email=email).first()
-        if u and u.check_hashed_password(password):
+        if u and u.check_pass(password):
             flash('Successfully logged in','success')
             login_user(u)
-            return redirect(url_for('social.index'))
+            return redirect(url_for('auth.index'))
         flash("Incorrect Email/password Combo", "warning")
         return render_template('login.html.j2', form=form)
 
@@ -83,4 +83,4 @@ def login():
 def logout():
     logout_user()
     flash('Successfully logged out', 'primary')
-    return redirect(url_for('social.index'))
+    return redirect(url_for('auth.index'))
